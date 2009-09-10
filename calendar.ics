@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Anthony PERARD <perard_a\@epita.fr> chronos.py//EN
+{% for event in events %}
+BEGIN:VEVENT
+UID:chronos-sheep-{{ event.uid }}-beta-v2
+DTSTAMP:{{ stamp }}
+SUMMARY:{{ event.name }} - {{ event.prof }} ({{ event.room }})
+DESCRIPTION:Cours: {{ event.name }}\nProf: {{ event.prof }}\nSalle: {{ event.room }}\nGroupes: {{ event.groups }}
+DTSTART;TZID=Europe/Paris:{{ event.start }}
+DTEND;TZID=Europe/Paris:{{ event.end }}
+LOCATION:{{ event.room }}
+END:VEVENT
+{% endfor %}
+END:VCALENDAR
